@@ -31,7 +31,7 @@ a simple interface to pulp which is also an interface blueprint for potential ot
 import pulp as pl
 import time
 
-from pyschedule.solvers.pulp_scip import SCIP_CMD
+from .pulp_scip import SCIP_CMD
 
 class MIP(object):
 	"""
@@ -41,7 +41,7 @@ class MIP(object):
 	def __init__(self,name,kind='Minimize'):
 		kinds = {'Minimize':pl.LpMinimize, 'Maximize':pl.LpMaximize}
 		# self.mip = pl.LpProblem(name, kinds[kind])
-		self.mip = pl.LpProblem('Integer Program', kinds[kind])
+		self.mip = pl.LpProblem('Integer_Program', kinds[kind])
 
 	def var(self,name,low=0,up=0,cat='Binary'):
 		return pl.LpVariable(name, low, up, cat=cat)
